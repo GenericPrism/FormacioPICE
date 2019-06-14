@@ -10,22 +10,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Practica 1</title>
+    <title>Practica 1 CSS</title>
+    <style>
+        p#p1 {
+            background-color: blue;
+            width: 400px;
+            height: 300px;
+            margin: 25px auto;
+            border: 1px solid;
+            padding: 100px;
+            box-sizing: border-box; 
+        }
+        p#p2 {
+            background-color: red;
+            width: 500px;
+            height: 250px;
+            margin-top: 200px;
+            padding: 10px;
+        }
+        p::before {
+            content: url(student.png);
+        }
+        p::selection {
+            background-color: yellow;
+        }
+        p::first-letter {
+            font-size: 70px;
+        }
+    </style>
 </head>
 
 <body>
-    <ul>
-        <li>
-            <a href="./admin/index.html">Ves a l'índex.</a>
-        </li>
-        <li>
-            <a href="https://cardmarket.com" target="_blank">Mkm</a>
-        </li>
-        <li>
-            <a href="tables.html">Taules</a>
-        </li>
-    </ul>
-    <img src="img/owl.jpg" alt="owl" />
+    <p id="p1">poiuytrew</p>
+    <p id="p2">agfagagkgna</p>
+    <p>Montanya</p>
+    <p>Montanya</p>
+    <p>Montanya</p>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

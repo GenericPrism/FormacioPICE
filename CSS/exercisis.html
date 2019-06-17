@@ -12,37 +12,39 @@
 
     <title>Practica 1 CSS</title>
     <style>
-        p#p1 {
-            background-color: blue;
+        
+        #capa1 {
+            margin: 100px auto;
+            width: 50%;
+            height: 200px;
+            background-color: blueviolet;
+            overflow-wrap: break-word;
+        }
+        #capa2 {
+            margin: 100px auto;
             width: 400px;
-            height: 300px;
-            margin: 25px auto;
-            border: 1px solid;
-            padding: 100px;
-            box-sizing: border-box; 
+            height: 200px;
+            background-color: cadetblue;
         }
-        p#p2 {
-            background-color: red;
-            width: 500px;
-            height: 250px;
-            margin-top: 200px;
-            padding: 10px;
-        }
-        p::selection {
-            background-color: yellow;
-        }
-        p::first-letter {
-            font-size: 70px;
+        #capa2 div {
+            float: left;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 
 <body>
-    <p id="p1">poiuytrew</p>
-    <p id="p2">agfagagkgna</p>
-    <p>Montanya</p>
-    <p>Montanya</p>
-    <p>Montanya</p>
+    <div id="capa1">Uyeyeyeyeyeyeyeyyeyeyeyeyeyeyeyeyeyeyeyey</div>
+    <div id="capa2">
+        <div>
+            hola
+        </div>
+        <div>
+            que tal
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

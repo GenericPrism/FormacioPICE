@@ -12,37 +12,42 @@
 
     <title>Practica 1 CSS</title>
     <style>
-        p#p1 {
+        div {
+            float: left;
+            position: relative;
+            width: 35%;
             background-color: blue;
-            width: 400px;
             height: 300px;
-            margin: 25px auto;
-            border: 1px solid;
-            padding: 100px;
-            box-sizing: border-box; 
+            margin-left: 10%;
         }
-        p#p2 {
-            background-color: red;
-            width: 500px;
-            height: 250px;
-            margin-top: 200px;
-            padding: 10px;
+        @media screen and (max-width: 900px) {
+            
+            h1 {
+                color:crimson;
+            }
+            div {
+                width: 20%;
+            }   
         }
-        p::selection {
-            background-color: yellow;
-        }
-        p::first-letter {
-            font-size: 70px;
+
+        @media screen and (max-width: 600px) {
+            
+            h1 {
+                color: coral;
+            }
+            div {
+                width: 80%;
+                margin-bottom: 5%;
+            }   
         }
     </style>
 </head>
 
 <body>
-    <p id="p1">poiuytrew</p>
-    <p id="p2">agfagagkgna</p>
-    <p>Montanya</p>
-    <p>Montanya</p>
-    <p>Montanya</p>
+    <h1>Uyeyeye</h1>
+    <div id="capa1"></div>
+    <div id="capa2"></div>
+    <div id="capa3"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

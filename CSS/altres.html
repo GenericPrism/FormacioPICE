@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo&display=swap" rel="stylesheet"> 
+    <title>Practica 1 CSS</title>
+    <style>
+
+        @font-face {
+            font-family: a;
+            src: url("Scheherazade-Regular.ttf");
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: blue;
+            text-shadow: 4px 3px 4px red;
+        }
+
+        .sombra {
+            width: 300px;
+            height: 200px;
+            background-color: azure;
+            box-shadow: 4px 3px 4px blueviolet;
+        }
+
+        p {
+            font-family: a;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+
+        #capa1 {
+            left: 100px;
+            transition: background-color 2s, width 2s, height 2s;
+        }
+
+        #capa2 {
+            left: 500px;
+            transition: background-color 2s, width 2s, height 2s, transform 2s, left 2s;
+        }
+
+        #capa3 {
+            top: 400px;
+            left: 500px;
+            transition: background-color 2s, width 2s, height 2s,  left 2s, top 2s, transform 2s;
+        }
+
+        #capa4 {
+            left: 100px;
+            top: 400px;
+            transition: background-color 2s, width 2s, height 2s,  left 2s, top 2s, transform 2s;
+        }
+
+        #capa1:hover {
+            width: 250px;
+            height: 250px;
+            background-color: blueviolet;
+        }
+
+        #capa2:hover {
+            width: 250px;
+            height: 250px;
+            left: 350px;
+            background-color: crimson;
+            transform: rotate(90deg);
+        }
+
+        #capa3:hover {
+            width: 250px;
+            height: 250px;
+            background-color: burlywood;
+            transform: rotate(90deg);
+            left:350px;
+            top: 290px;
+        }
+
+        #capa4:hover {
+            width: 250px;
+            height: 250px;
+            background-color:darkkhaki;
+            transform: rotate(90deg);
+            top: 290px;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <div id="capa1"></div>
+    <div id="capa2"></div>
+    <div id="capa3"></div>
+    <div id="capa4"></div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

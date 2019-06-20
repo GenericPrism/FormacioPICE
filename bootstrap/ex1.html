@@ -32,36 +32,41 @@
             width: 95%;
             margin-left: auto;
             margin-right: auto;
+            box-sizing: content-box;
         }
 
+        #big div {
+            height: 400px;
+            background-color: salmon;
+        }
     </style>
 </head>
 
 <body>
  <div class="container">
      <div class="row" id="header">
-        <div class="col-lg-4">x</div>
-        <h2 class="col-lg-4">Pepesito</h2>
-        <div class="col-lg-4">x</div>
+        <div class="col-lg-4 col-md-4">x</div>
+        <h2 class="col-lg-4 col-md-4">Pepesito</h2>
+        <div class="col-lg-4 col-md-4">x</div>
      </div>
      <div class="row" id="content">
          <div class="col-lg-10 col-md-9 col-xs-8" id="big">
-            <div class="col-lg-6">yeyey</div>
-            <div class="col-lg-6">yeyey</div>
+            <div class="col-lg-6 col-md-6">
+            </div>
+            <div class="col-lg-6 col-md-6">
+            </div>
          </div>
-         <div class="col-lg-2 col-md-3 col-xs-4">
+         <div class="col-lg-2 col-md-3 col-xs-12">
             cba
          </div>
      </div>
      <div id="footer">
         <div class="row">
-                <div class="col-lg-3 col-md-6">a</div>
-                <div class="col-lg-3 col-md-6">a</div>
-        </div>
-        <div class="row">
-                <div class="col-lg-3 col-md-6">a</div>
-                <div class="col-lg-3 col-md-6">a</div>
-        </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">a</div>
+                <div class="col-lg-3 col-md-6 col-sm-6">a</div>
+                <div class="col-lg-3 col-sm-6">a</div>
+                <div class="col-lg-3 col-sm-6">a</div>
+        
      </div>
 
  </div>

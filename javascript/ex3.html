@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <title>Practica 1 CSS</title>
+    <style>
+        label {
+            width: 75px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <forms>
+            <div class="row">
+                <div class="col-lg-2">
+                    <label>Tipus:</label>
+                    <select name="tipus" onchange="tipusGelat()">
+                        <option value="">Tipus de gelat</option>
+                        <option value="cucurutxo">Cucurutxo</option>
+                        <option value="copa">Copa</option>
+                        <option value="vaset">Vaset</option>
+                    </select>
+                    <div class="col-xs-1">
+                            <p id="preu_tipus"></p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <label>Boles:</label>
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <i class="fas fa-arrow-circle-down fa-object-align-horizontal" onclick="restarBoles();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                            <p id="n_boles">0</p>
+                        </div>
+                        <div class="col-xs-1">
+                            <i class="fas fa-arrow-circle-up" onclick="sumarBoles();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                            <p id="preu_boles"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <label>Toppings:</label>
+                <div class="row">
+                        <div class="col-xs-1">
+                            <i class="fas fa-arrow-circle-down" onclick="restarToppings();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                                <p id="n_toppings">0</p>
+                        </div>
+                        <div class="col-xs-1">
+                                <i class="fas fa-arrow-circle-up" onclick="sumarToppings();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                                <p id="preu_toppings"></p>
+                        </div>
+                    </div>
+            </div>
+            <div class="col">
+                <label>Sirope:</label>
+                <div class="row">
+                        <div class="col-xs-1">
+                                <i class="fas fa-arrow-circle-down" onclick="restarSiropes();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                                <p id="n_siropes">0</p>
+                        </div>
+                        <div class="col-xs-1">
+                                <i class="fas fa-arrow-circle-up" onclick="sumarSiropes();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                                <p id="preu_siropes"></p>
+                            </div>
+                    </div>
+            </div>
+            <div class="col">
+                <label>Cireres:</label>
+                <div class="row">
+                        <div class="col-xs-1">
+                                <i class="fas fa-arrow-circle-down" onclick="restarCireres();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                                <p id="n_cireres">0</p>
+                        </div>
+                        <div class="col-xs-1">
+                                <i class="fas fa-arrow-circle-up" onclick="sumarCireres();"></i>
+                        </div>
+                        <div class="col-xs-1">
+                                <p id="preu_cireres"></p>
+                            </div>
+                    </div>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-2">
+            <img src="#">
+        </div>
+        <div class="col-lg-3">
+            <label>Nombre de Gelats:</label>
+            <div class="row">
+                    <div class="col-xs-1">
+                            <i class="fas fa-arrow-circle-down" onclick="restarGelats();"></i>
+                    </div>
+                    <div class="col-xs-1">
+                            <p id="n_gelats">0</p>
+                    </div>
+                    <div class="col-xs-1">
+                            <i class="fas fa-arrow-circle-up" onclick="sumarGelats();"></i>
+                    </div>
+                </div>
+        </div>
+        <div class="col-lg-2 col-lg-offset-1">
+            <h4 id="total">Preu final Gelat: </h4>
+        </div>
+        <div class="col-lg-2 col-lg-offset-1">
+                <h4 id="preu_gelats">Preu final: </h4>
+            </div>
+
+    </div>
+    </forms>
+    </div>
+    <script>
+
+        var boles = 0;
+        var toppings = 0;
+        var siropes = 0;
+        var cireres = 0;
+        var nGelats = 0;
+        var preuBoles = 0;
+        var preuToppings = 0;
+        var preuSiropes = 0;
+        var preuCireres = 0;
+        var preuTipus = 0;
+
+        function maquetacioPreu(item){
+            var preu = item.toFixed(2) + " €"; 
+            return preu;
+        }
+        function restarBoles() {
+            boles -= 1;
+
+            preuBoles = boles * 1.6;
+            document.getElementById('n_boles').innerHTML = boles.toString();
+            var preu = maquetacioPreu(preuBoles);
+            document.getElementById('preu_boles').innerHTML = preu;
+            total();
+            return boles;
+        }
+
+        function sumarBoles() {
+            boles += 1;
+            preuBoles = boles * 1.6;
+            document.getElementById('n_boles').innerHTML = boles.toString();
+            var preu = maquetacioPreu(preuBoles);
+            document.getElementById('preu_boles').innerHTML = preu;
+            total();
+            return boles;
+        }
+
+        function restarToppings() {
+            toppings -= 1;
+            preuToppings = toppings * 0.50;
+            var preu = maquetacioPreu(preuToppings);
+            document.getElementById('preu_toppings').innerHTML = preu;
+            document.getElementById('n_toppings').innerHTML = toppings.toString()
+            total();
+            return toppings;
+        }
+
+        function sumarToppings() {
+            toppings += 1;
+            preuToppings = toppings * 0.50;
+            var preu = maquetacioPreu(preuToppings);
+            document.getElementById('preu_toppings').innerHTML = preu;
+            document.getElementById('n_toppings').innerHTML = toppings.toString()
+            total();
+            return toppings;
+        }
+
+        function restarSiropes() {
+            siropes -= 1;
+            preuSiropes = siropes * 0.25;
+            var preu = maquetacioPreu(preuSiropes);
+            document.getElementById('preu_siropes').innerHTML = preu;
+            document.getElementById('n_siropes').innerHTML = siropes.toString()
+            total();
+            return siropes;
+        }
+        function sumarSiropes() {
+            siropes += 1;
+            preuSiropes = siropes * 0.25;
+            var preu = maquetacioPreu(preuSiropes);
+            document.getElementById('preu_siropes').innerHTML = preu;
+            document.getElementById('n_siropes').innerHTML = siropes.toString()
+            total();
+            return siropes;
+        }
+        function restarCireres() {
+            cireres -= 1;
+            preuCireres = cireres * 0.50;
+            var preu = maquetacioPreu(preuCireres);
+            document.getElementById('preu_cireres').innerHTML = preu;
+            document.getElementById('n_cireres').innerHTML = cireres.toString()
+            total();
+            return cireres;
+        }
+        function sumarCireres() {
+            cireres += 1;
+            preuCireres = cireres * 0.50;
+            var preu = maquetacioPreu(preuCireres);
+            document.getElementById('preu_cireres').innerHTML = preu;
+            document.getElementById('n_cireres').innerHTML = cireres.toString()
+            total();
+            return cireres;
+        }
+        function restarGelats() {
+            nGelats -= 1;
+
+            var a = total();
+
+            preuGelats = a * nGelats;
+            var preu = maquetacioPreu(preuGelats);
+            document.getElementById('preu_gelats').innerHTML =  "Preu final Gelat: " + preuGelats.toString() + " €";
+            document.getElementById('n_gelats').innerHTML = nGelats;
+            total();
+            return preuGelats;
+        }
+
+        function sumarGelats() {
+            nGelats += 1;
+
+            var a = total();
+
+            preuGelats = a * nGelats;
+            var preu = maquetacioPreu(preuGelats);
+            document.getElementById('preu_gelats').innerHTML = "Preu final Gelat: " + preuGelats.toString() + " €";
+            document.getElementById('n_gelats').innerHTML = nGelats;
+            total();
+            return preuGelats;
+        }
+
+        function total()
+        {
+            var total = preuBoles + preuToppings + preuSiropes + preuCireres;
+            document.getElementById('total').innerHTML = "Preu final Total: " + total.toString() + " €";
+            return total;
+        }
+
+        function tipusGelat(){
+            var tipus = document.getElementsByName('tipus').value;
+            
+            if(tipus === "cucurutxo")
+            {
+                document.getElementById('preu_tipus').innerHTML = "3.5 €";
+            }
+            if(tipus === "copa")
+            {
+                document.getElementById('preu_tipus').innerHTML = "3€";
+            }
+            if(tipus === "vaset")
+            {
+                document.getElementById('preu_tipus').innerHTML = "3€";
+            }
+        }
+    </script>
+</body>
+
+</html>

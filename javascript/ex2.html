@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <title>Practica 1 CSS</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+
+        .container {
+            width: 100%;
+            margin-top: 10%;
+            text-align: center;
+        }
+
+        h3 {
+            margin-bottom: 55px;
+        }
+
+        form {
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+        }
+
+        label {
+            width: 100px;
+        }
+
+        i {
+            margin-left: 5px;
+        }
+
+        input:last-of-type {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form name="form1">
+            <div class="row">
+                <label>Provincia:</label>
+                <select name="provincia" id="provincia">
+                    <option value="">Tria una provincia</option>
+                    <option value="46€">Barcelona</option>
+                    <option value="57€">Girona</option>
+                    <option value="75€">Tarragona</option>
+                    <option value="120€">Lleida</option>
+                </select>
+                <input type="button" class="btn btn-secondary" value="enviar" onclick="enviar()">
+            </div>
+        </form>
+        <p id="despeses">Enviament: </p>
+    </div>
+    <script>
+        function enviar() {
+            var provincia = document.getElementById('provincia').value;
+
+            var enviament = document.getElementById('despeses');
+
+            enviament.innerHTML = "Enviament: " + provincia;
+        }
+    </script>
+</body>
+
+</html>

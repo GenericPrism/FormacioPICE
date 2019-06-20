@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <title>Practica 1 CSS</title>
+    <style>
+        label {
+            width: 75px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    
+    <select value="desplegable" id="desplegable">
+        <option value="sud">Sud</option>
+        <option value="nord">Nord</option>
+    </select>
+    <input type="button" value="clica'm" onclick="saludar()">
+    <img src="" id="imatge">
+    </div>
+    <script>
+
+        var d = new Date();
+        var h = d.getHours();
+        var m = d.getMonth();
+        var day = d.getDate();
+
+        console.log(h);
+        function saludar(){
+
+            var emisferi = document.getElementById('desplegable').value;
+
+            if( m < 3 )
+            {
+                if( m == 2 && day >= 21)
+                {
+                    if(emisferi == "nord")
+                    {
+                        alert("Sóm primavera!");
+                        document.getElementById('imatge').src = 'https://ep01.epimg.net/elpais/imagenes/2019/03/20/ciencia/1553061843_009077_1553061919_noticia_normal.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Sóm tardor!");
+                        document.getElementById('imatge').src = 'https://statics.ccma.cat/multimedia/jpg/9/2/1474451267229.jpg';
+                    }
+                }
+                else
+                {
+                    if(emisferi == "nord")
+                    {
+                        alert("Encara es hivern");
+                        document.getElementById('imatge').src = 'https://www.ara.cat/2018/01/19/estils/Racons-dhivern-Catalunya_1945615463_50370815_1500x1001.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Sóm estiu!");
+                        document.getElementById('imatge').src = 'http://artsioficis.cat/wp-content/uploads/2016/06/bonestiu15web.jpg';
+                    }
+                }
+            }
+            else if( m < 6 ){
+                if(m == 5 && day >= 21)
+                {
+                    if(emisferi == "nord")
+                    {
+                        alert("es estiu");   
+                        document.getElementById('imatge').src = 'http://artsioficis.cat/wp-content/uploads/2016/06/bonestiu15web.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Sóm Hivern!");
+                        document.getElementById('imatge').src = 'https://www.ara.cat/2018/01/19/estils/Racons-dhivern-Catalunya_1945615463_50370815_1500x1001.jpg';
+                    }
+                }
+                else{
+                    if(emisferi == "nord")
+                    {
+                        alert("Estem a primavera"); 
+                        document.getElementById('imatge').src = 'https://ep01.epimg.net/elpais/imagenes/2019/03/20/ciencia/1553061843_009077_1553061919_noticia_normal.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Sóm Tardor!");
+                        document.getElementById('imatge').src = 'https://statics.ccma.cat/multimedia/jpg/9/2/1474451267229.jpg';
+                    }
+                }
+            }
+            else if( m < 9 ){
+                if(m == 8 && day >= 23)
+                {
+                    if(emisferi == "nord")
+                    {
+                        alert("Sóm Tardor!");
+                        document.getElementById('imatge').src = 'https://statics.ccma.cat/multimedia/jpg/9/2/1474451267229.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Sóm Primavera!");
+                        document.getElementById('imatge').src = 'https://ep01.epimg.net/elpais/imagenes/2019/03/20/ciencia/1553061843_009077_1553061919_noticia_normal.jpg';
+                    }
+                }
+                else {
+                    if(emisferi == "nord")
+                    {
+                        alert("Encara és estiu!");
+                        document.getElementById('imatge').src = 'http://artsioficis.cat/wp-content/uploads/2016/06/bonestiu15web.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Encara és hivern!");
+                        document.getElementById('imatge').src = 'https://www.ara.cat/2018/01/19/estils/Racons-dhivern-Catalunya_1945615463_50370815_1500x1001.jpg';
+                    }
+                }
+            }
+            else if( m == 11) {
+                
+                if(d >= 21)
+                {
+                    if(emisferi == "nord")
+                    {
+                        alert("Sóm Hivern!");
+                        document.getElementById('imatge').src = 'https://www.ara.cat/2018/01/19/estils/Racons-dhivern-Catalunya_1945615463_50370815_1500x1001.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Sóm Estiu!");
+                        document.getElementById('imatge').src = 'http://artsioficis.cat/wp-content/uploads/2016/06/bonestiu15web.jpg';
+                    } 
+                }
+                else{
+                    if(emisferi == "nord")
+                    {
+                        alert("Encara sóm a la tardor!");
+                        document.getElementById('imatge').src = 'https://statics.ccma.cat/multimedia/jpg/9/2/1474451267229.jpg';
+                    }
+                    if(emisferi == "sud")
+                    {
+                        alert("Encara sóm a la primavera!");
+                        document.getElementById('imatge').src = 'https://ep01.epimg.net/elpais/imagenes/2019/03/20/ciencia/1553061843_009077_1553061919_noticia_normal.jpg';
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        #first_arrow,
+        .tipus_gelat,
+        .tipus_granitzat,
+        .tipus_crep,
+        #second_arrow,
+        .sabor_gelat,
+        .sabor_granitzat,
+        .sabor_crep_dolç,
+        .sabor_crep_salat,
+        #third_arrow,
+        .extres_gelat,
+        .extres_granitzat,
+        .extres_crep_dolç,
+        .extres_crep_salat {
+            display: none;
+        }
+
+        #first_arrow, #second_arrow, #third_arrow {
+            text-align: center;
+        }
+
+        div #refresh {
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: block;
+            width: 130px;
+            margin: 40px auto 0px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-2">
+                <label>Tria una opció:</label>
+                <select id="opcions">
+                    <option value="">tria una opció</option>
+                    <option value="gelat">Gelat</option>
+                    <option value="granitzat">Granitzat</option>
+                    <option value="crep">Crep</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-1" id="first_arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="col-xs-4 col-sm-2" id="tipus">
+                <div class="tipus_gelat">
+                    <label>Tipus Gelat:</label>
+                    <select id="select_gelat">
+                        <option value="">tria una opció</option>
+                        <option value="cucurutxo">Cucurutxo</option>
+                        <option value="tarrina">Tarrina</option>
+                    </select>
+                </div>
+                <div class="tipus_granitzat">
+                    <label>Tipus Granitzat:</label>
+                    <select id="select_granitzat">
+                        <option value="">tria una opció</option>
+                        <option value="petit">Petit</option>
+                        <option value="mitja">Mitja</option>
+                        <option value="gran">Gran</option>
+                    </select>
+                </div>
+                <div class="tipus_crep">
+                    <label>Tipus Crep:</label>
+                    <select id="select_crep">
+                        <option value="">tria una opció</option>
+                        <option value="dolç">Dolç</option>
+                        <option value="salat">Salat</option>
+                    </select>
+                </div>
+            </div>
+            <div
+                class="col-xs-4 col-sm-1 col-xs-offset-8 col-sm-offset-0 visible-xs-block hidden-sm hidden-md hidden-lg">
+                <i class="fas fa-arrow-down"></i>
+            </div>
+            <div class="col-xs-4 col-sm-1 col-xs-offset-8 col-sm-offset-0 hidden-xs" id="second_arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="col-xs-4 col-sm-2 col-xs-push-8 col-sm-push-0" id="sabor">
+                <div class="sabor_gelat">
+                    <label>Sabor Gelat:</label>
+                    <select id="select_sabor_gelat">
+                        <option value="">Tria una opció</option>
+                        <option value="vainilla">Vainilla</option>
+                        <option value="maduixa">Maduixa</option>
+                        <option value="xoco">Xocolata</option>
+                    </select>
+                </div>
+                <div class="sabor_granitzat">
+                    <label>Sabor Granitzat:</label>
+                    <select id="select_sabor_granitzat">
+                        <option value="">Tria una opció</option>
+                        <option value="llimona">Llimona</option>
+                        <option value="taronja">Taronja</option>
+                        <option value="cafe">Cafe</option>
+                    </select>
+                </div>
+                <div class="sabor_crep_dolç">
+                    <label>Sabor Crep Dolça:</label>
+                    <select id="select_sabor_crep_dolç">
+                        <option value="">Tria una opció</option>
+                        <option value="sucre">Sucre</option>
+                        <option value="nutella">Nutella</option>
+                    </select>
+                </div>
+                <div class="sabor_crep_salat">
+                    <label>Sabor Crep Salada:</label>
+                    <select id="select_sabor_crep_salat">
+                        <option value="">Tria una opció</option>
+                        <option value="pernil">Pernil</option>
+                        <option value="salat">Salat</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-1 visible-xs-block hidden-sm-none hidden-md-none hidden-lg-none">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="col-xs-4 col-sm-1 hidden-xs" id="third_arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="col-xs-4 col-sm-2 col-xs-pull-8 col-sm-pull-0" id="extres">
+                <div class="extres_gelat">
+                    <label>Extres Gelat:</label>
+                    <select id="select_extres_gelat">
+                        <option value="">Tria una opció</option>
+                        <option value="cireres">Cireres</option>
+                        <option value="cookies">Cookies</option>
+                    </select>
+                </div>
+                <div class="extres_granitzat">
+                    <label>Extres Granitzat:</label>
+                    <select id="select_extres_granitzat">
+                        <option value="">Tria una opció</option>
+                        <option value="palleta">Palleta</option>
+                        <option value="got">Got</option>
+                    </select>
+                </div>
+                <div class="extres_crep_dolç">
+                    <label>Extres Crep Dolça:</label>
+                    <select id="select_extres_crep_dolç">
+                        <option value="">Tria una opció</option>
+                        <option value="nata">Nata</option>
+                        <option value="sirope">Sirope</option>
+                    </select>
+                </div>
+                <div class="extres_crep_salat">
+                    <label>Extres Crep Salada:</label>
+                    <select id="select_extres_crep_salat">
+                        <option value="">Tria una opció</option>
+                        <option value="nata">Nata</option>
+                        <option value="sirope">Sirope</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <input type="button" class="btn btn-primary" id="refresh" value="Refrescar">
+        </div>
+    </div>
+    <script>
+
+        $(function () {
+            $('#opcions').change(function () {
+
+                var opcio = $('#opcions').val();
+
+                if (opcio == "gelat") {
+                    $('#first_arrow').show();
+                    $('.tipus_gelat').show();
+                    $('.tipus_granitzat').hide();
+                    $('.tipus_crep').hide();
+                    $('.progress-bar').attr('style', "width:25%");
+
+                }
+                if (opcio == "granitzat") {
+                    $('#first_arrow').show();
+                    $('.tipus_gelat').hide();
+                    $('.tipus_granitzat').show();
+                    $('.tipus_crep').hide();
+                    $('.progress-bar').attr('style', "width:25%");
+                }
+                if (opcio == "crep") {
+                    $('#first_arrow').show();
+                    $('.tipus_gelat').hide();
+                    $('.tipus_granitzat').hide();
+                    $('.tipus_crep').show();
+                    $('.progress-bar').attr('style', "width:25%");
+                }
+            });
+            $('#select_gelat').change(function () {
+
+                var select_gelat = $('#select_gelat').val();
+                if (select_gelat == "cucurutxo" || select_gelat == "tarrina") {
+                    $('#second_arrow').show();
+                    $('.sabor_gelat').show();
+                    $('.progress-bar').attr('style', "width:50%");
+                }
+            });
+            $('#select_granitzat').change(function () {
+
+                var select_granitzat = $('#select_granitzat').val();
+                if (select_granitzat == "petit" || select_granitzat == "mitja" || select_granitzat == "gran") {
+                    $('#second_arrow').show();
+                    $('.sabor_granitzat').show();
+                    $('.progress-bar').attr('style', "width:50%");
+                }
+            });
+            $('#select_crep').change(function () {
+
+                var select_crep = $('#select_crep').val();
+                if (select_crep == "dolç") {
+                    $('#second_arrow').show();
+                    $('.sabor_crep_dolç').show();
+                    $('.progress-bar').attr('style', "width:50%");
+                }
+                if (select_crep == "salat") {
+                    $('#second_arrow').show();
+                    $('.sabor_crep_salat').show();
+                    $('.progress-bar').attr('style', "width:50%");
+                }
+            });
+            $('#select_sabor_gelat').change(function () {
+
+                var select_sabor_gelat = $('#select_sabor_gelat').val();
+                if (select_sabor_gelat == "vainilla" || select_sabor_gelat == "maduixa" || select_sabor_gelat == "xoco") {
+                    $('#third_arrow').show();
+                    $('.extres_gelat').show();
+                    $('.progress-bar').attr('style', "width:75%");
+                }
+            });
+            $('#select_sabor_granitzat').change(function () {
+
+                var select_sabor_granitzat = $('#select_sabor_granitzat').val();
+                if (select_sabor_granitzat == "llimona" || select_sabor_granitzat == "taronja" || select_sabor_granitzat == "cafe") {
+                    $('#third_arrow').show();
+                    $('.extres_granitzat').show();
+                    $('.progress-bar').attr('style', "width:75%");
+                }
+            });
+            $('#select_sabor_crep_dolç').change(function () {
+
+                var select_sabor_crep_dolç = $('#select_sabor_crep_dolç').val();
+                if (select_sabor_crep_dolç == "sucre" || select_sabor_crep_dolç == "nutella") {
+                    $('#third_arrow').show();
+                    $('.extres_crep_dolç').show();
+                    $('.progress-bar').attr('style', "width:75%");
+                }
+            });
+            $('#select_sabor_crep_salat').change(function () {
+
+                var select_sabor_crep_dolç = $('#select_sabor_crep_salat').val();
+                if (select_sabor_crep_dolç == "pernil" || select_sabor_crep_dolç == "salat") {
+                    $('#third_arrow').show();
+                    $('.extres_crep_salat').show();
+                    $('.progress-bar').attr('style', "width:75%");
+                }
+            });
+            $('#select_extres_gelat').change(function () {
+
+                $('.progress-bar').attr('style', "width:100%");
+            });
+            $('#select_extres_granitzat').change(function () {
+                $('.progress-bar').attr('style', "width:100%");
+            });
+            $('#select_extres_crep_dolç').change(function () {
+                $('.progress-bar').attr('style', "width:100%");
+            });
+            $('#select_extres_crep_salat').change(function () {
+                $('.progress-bar').attr('style', "width:100%");
+            });
+            $('#refresh').click(function () {
+                location.reload();
+            });
+        });
+
+    </script>
+</body>
+
+</html>

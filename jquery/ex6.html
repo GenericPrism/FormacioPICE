@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        button {
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .col {
+            margin-top: 35px;
+        }
+        .destacat {
+            color: red;
+        }
+        ul {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            <div class="col-xs-4">
+                <button class="btn btn-primary" id="canviar" value="canviar">1 col</button>
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-primary" id="canviar2" value="canviar">2 col</button>
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-primary" id="canviar3" value="canviar">3 col</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-4">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div class="col col-xs-4">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div class="col col-xs-4">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+        </div>
+        <ul>
+            <li>Pebre</li>
+            <li>Enciam</li>
+            <li>Pebrot</li>
+            <li>Carbaço</li>
+        </ul>
+    </div>
+    <script>
+
+        $(function () {
+            $('#canviar').click(function () {
+                $('.col').removeClass('col-xs-4');
+                $('.col').removeClass('col-xs-6');
+                $('.col').addClass('col-xs-12');
+
+            });
+            $('#canviar2').click(function () {
+                $('.col').removeClass('col-xs-4');
+                $('.col').removeClass('col-xs-12');
+                $('.col').addClass('col-xs-6');
+            });
+            $('#canviar3').click(function () {
+                $('.col').removeClass('col-xs-6');
+                $('.col').removeClass('col-xs-12');
+                $('.col').addClass('col-xs-4');
+            });
+
+            $('li').click(function() {
+                $('li').removeClass('destacat');
+                $(this).addClass('destacat');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

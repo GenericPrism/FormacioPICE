@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <title>Practica 1 CSS</title>
+    <style>
+        label {
+            width: 75px;
+        }
+
+        td {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table border="1" style="text-align: center;">
+            <tr>
+                <th>Desti</th>
+                <th>Correus</th>
+                <th>SEUR</th>
+                <th>UPS</th>
+            </tr>
+            <tr>
+                <td>Penins</td>
+                <td>4 €</td>
+                <td>4.5 €</td>
+                <td>5 €</td>
+            </tr>
+            <tr>
+                <td>Balears</td>
+                <td>8 €</td>
+                <td>8.8 €</td>
+                <td>9.5 €</td>
+            </tr>
+            <tr>
+                <td>Canaries</td>
+                <td>11 €</td>
+                <td>13.8 €</td>
+                <td>15.5 €</td>
+            </tr>
+            <tr>
+                <td>Estranger</td>
+                <td>15 €</td>
+                <td>20 €</td>
+                <td>19 €</td>
+            </tr>
+
+        </table>
+        <label>Desti</label>
+        <select id="desti">
+            <option value="">Tria Desti</option>
+            <option value="penins">Peninsula</option>
+            <option value="balears">Balears</option>
+            <option value="canaries">Canaries</option>
+            <option value="estranger">Estranger</option>
+        </select>
+        <label>Transportista</label>
+        <select id="trans">
+            <option value="">Tria Trans</option>
+            <option value="correus">Correus</option>
+            <option value="seur">SEUR</option>
+            <option value="ups">UPS</option>
+        </select>
+        <input type="button" value="enviar" onclick="calcular()">
+        <label>El preu final és </label>
+        <p style="display: inline;" id="resultat"></p>
+        <i class="fas fa-arrow-alt-circle-up" onclick="quantitatUp()"></i>
+        <label>Quantitat:</label><p style="display: inline;" id="quantitat">1</p>
+        <i class="fas fa-arrow-alt-circle-down" onclick="quantitatDown()"></i>
+        <p id="resultat_final"></p>
+    </div>
+    <script>
+        var array = [];
+        array['penins'] = [["correus", 4], ["seur", 4.5], ["ups", 5]];
+        array['balears'] = [["correus", 8], ["seur", 8.8], ["ups", 9.5]];
+        array['canaries'] = [["correus", 11], ["seur", 13.8], ["ups", 15.5]];
+        array['estranger'] = [["correus", 15], ["seur", 20], ["ups", 19]];
+
+        console.log(array);
+
+        function quantitatUp(){
+            var quantitat = document.getElementById('quantitat').innerHTML;
+            var preufinal = document.getElementById('resultat').innerHTML;
+            var sumatori = parseInt(quantitat);
+            sumatori++;
+            document.getElementById('quantitat').innerHTML = sumatori;
+            document.getElementById('resultat_final').innerHTML = "El preu final és " + (preufinal * sumatori);
+        }
+        function quantitatDown(){
+            var quantitat = document.getElementById('quantitat').innerHTML;
+            var preufinal = document.getElementById('resultat').innerHTML;
+            var resta = parseInt(quantitat);
+            resta -= 1;
+            document.getElementById('quantitat').innerHTML = resta;
+            document.getElementById('resultat_final').innerHTML = "El preu final és " + (preufinal * resta);
+        }
+        function calcular() {
+            var preufinal = 0;
+            var desti = document.getElementById('desti').value;
+            var trans = document.getElementById('trans').value;
+            var trobat = false;
+            if (desti == "" && trans == "") {
+                alert("Seleciona un desti o transport");
+            }
+            else {
+
+                for (let i = 0; i < 3; i++) {
+                    if (array[desti][i][0] == trans) {
+                        preufinal = array[desti][i][1];
+                    }
+                }
+                document.getElementById('resultat').innerHTML = preufinal;
+            }
+        }
+    </script>
+</body>
+
+</html>

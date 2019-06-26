@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <title>Practica 1 CSS</title>
+    <style>
+        label {
+            width: 75px;
+        }
+
+        td {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <label>Factorial</label>
+        <input type="text" placeholder="posa num" id="num">
+        <input type="button" value="clica'm" onclick="factorial()">
+        <p id="resultat_factorial"></p>
+        <label>Fibonacci</label>
+        <input type="text" placeholder="posa num" id="num_fibo">
+        <input type="button" value="clica'm" onclick="fib()">
+        <p id="resultat_fibo"></p>
+        <label>Primers</label>
+        <input type="text" placeholder="posa num" id="num_primers">
+        <input type="button" value="clica'm" onclick="primers()">
+        <p id="resultat_primers"></p>
+    </div>
+    <script>
+
+        function factorial() {
+            var factorial = document.getElementById('num').value;
+            var total_factorial = 1;
+            for (let i = factorial; i > 0; i--) {
+                total_factorial *= i;
+            }
+
+            document.getElementById('resultat_factorial').innerHTML = "El factorial de " + factorial + " és " + total_factorial;
+        }
+        function fibo() {
+            var fibo = document.getElementById('num_fibo').value;
+
+            var pos_actual = 0;
+            var i = 0;
+
+            for (let i = 0; i < fibo; i++) {
+                for (let j = 1; j < 2; j++) {
+                    pos_actual = i + j;
+                }
+            }
+        }
+        function primers(){
+            var primers = document.getElementById('num_primers').value;
+            var nPrimers = 2;
+            var arrayPrimers = [1,2];
+            do {
+                if(nPrimers % nPrimers == 0 && nPrimers % 2 !== 0) 
+                {
+                    arrayPrimers.push(nPrimers);
+                }
+                nPrimers++;
+            }while(primers > nPrimers)
+            document.getElementById('resultat_primers').innerHTML = "Els "+primers+ " nombres primers són "+arrayPrimers;
+        }
+
+
+    </script>
+</body>
+
+</html>

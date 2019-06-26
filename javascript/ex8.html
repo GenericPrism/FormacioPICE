@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        label {
+            width: 75px;
+        }
+
+        td {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="prod1" type="button" class="btn btn-info btn-lg" onclick="mostrar(product1)"></button>
+        <button id="prod2" type="button" class="btn btn-info btn-lg" onclick="mostrar(product2)"></button>
+        <button id="prod3" type="button" class="btn btn-info btn-lg" onclick="mostrar(product3)"></button>
+        <img width="500px" height="300px" id="imatge1" src="">
+        <p id="referencia1"></p>
+        <p id="descripcio1"></p>
+        <p id="preu1"></p>
+    </div>
+    <script>
+
+        function Producte(nom, referencia, descripcio, preu, foto) {
+            this.nom = nom;
+            this.referencia = referencia;
+            this.descripcio = descripcio;
+            this.preu = preu;
+            this.foto = foto;
+        }
+
+        var product1 = new Producte("Enciam", 01, "són verds", 2, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Romaine.jpg/254px-Romaine.jpg");
+        var product2 = new Producte("Formatge", 02, "alguns fan podor", 10, "https://www.petramora.com/8143/Queso-de-oveja-curado-entero-1-kg.jpg");
+        var product3 = new Producte("Pop", 03, "el pop a la brassa està molt bó", 25, "https://static01.nyt.com/images/2018/12/04/science/04SCI-ZIMMER/merlin_147494628_a788760f-4209-40db-a0be-1305c3a661a6-articleLarge.jpg?quality=75&auto=webp&disable=upscale");
+
+        document.getElementById('prod1').innerHTML = product1.nom;
+        document.getElementById('prod2').innerHTML = product2.nom;
+        document.getElementById('prod3').innerHTML = product3.nom;
+
+        function mostrar(nom) {
+            document.getElementById("imatge1").src = nom.foto;
+            document.getElementById("referencia1").innerHTML = nom.referencia;
+            document.getElementById("descripcio1").innerHTML = nom.descripcio;
+            document.getElementById("preu1").innerHTML = nom.preu;
+        }
+
+
+    </script>
+</body>
+
+</html>

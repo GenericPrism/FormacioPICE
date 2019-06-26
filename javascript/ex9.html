@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="ex1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        label {
+            width: 75px;
+        }
+
+        td {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="prod1" placeholder="Posa text">
+        <button type="button" class="btn btn-info btn-lg" onclick="mirarText()">Clica'm</button>
+        <p id="descripcio"></p>
+        <input type="text" id="pswd" placeholder="Posa text">
+        <button type="button" class="btn btn-info btn-lg" onclick="password()">Clica'm</button>
+    </div>
+    <script>
+
+        function password()
+        {
+            var pwd = document.getElementById('pswd').value;
+            var x = pwd.toLowerCase();
+            
+            if(x !== "abc")
+            {
+                alert("Contrasenya incorrecte");
+            }
+            else 
+            {
+                alert("Contrasenya acceptada");
+            }
+        }
+    
+        function mirarText()
+        {
+            var t = document.getElementById('prod1').value;
+            //var domini = t.split('@');
+            //var domini = domini[1].split('.');
+
+            if(t.indexOf('@') !== 7)
+            {
+                alert("El nom del correu es inferior o superior a 8 caracters!");
+            }
+            else 
+            {
+                var x = t.substr(8, 10);
+                var domini2 = x.split('.');
+                
+                var rex = /[A-Za-z0-9]@/;
+                alert(rex.test(t));
+                
+                if(domini2.length !== 2)
+                {
+                    alert("tens el domini mal posat");
+                }
+                else {
+                    console.log(domini2[0]);
+                }
+            }
+        }
+
+        //document.getElementById("descripcio").innerHTML 
+
+
+    </script>
+</body>
+
+</html>

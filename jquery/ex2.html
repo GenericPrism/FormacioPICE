@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+
+        #capa1 {
+            left: 500px;
+            top: 200px;
+            background-color: red;
+        }
+
+        #capa2 {
+            top: 400px;
+            left: 100px;
+            background-color: green;
+
+        }
+
+        #capa3 {
+            background-color: blue;
+        }
+
+        #capa4 {
+            left: 900px;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="capa1">
+    </div>
+    <div id="capa2">
+    </div>
+    <div id="capa3">
+    </div>
+    <div id="capa4">
+        <button id="butoAmagar">Amagar o Mostrar</button>
+        <button id="butoMostrar">Mostrar</button>
+    </div>
+    <script>
+
+        $(function () {
+            $('#butoAmagar').click(function () {
+                $('#capa1').toggle(1000);
+                $('#capa2').delay(2000).toggle(1000);
+                $('#capa3').delay(3000).toggle(1000);
+            });
+            $('#butoMostrar').click(function () {
+                $('#capa1').show(1000);
+                $('#capa2').delay(2000).show(1000);
+                $('#capa3').delay(3000).show(1000);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

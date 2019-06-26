@@ -15,37 +15,38 @@
         label {
             width: 75px;
         }
+        td {
+            width: 50px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
     
-    <select value="desplegable" id="desplegable">
-        <option value="sud">Sud</option>
-        <option value="nord">Nord</option>
-    </select>
-    <input type="button" value="clica'm" onclick="saludar()">
-    <img src="" id="imatge">
+    <input type="text" placeholder="posa num" id="num">
+    <input type="button" value="clica'm" onclick="calcular()">
+    <table id="ta"></table>
+
+    </table>
     </div>
     <script>
 
-        var d = new Date();
-        var day = d.getDay();
+        var ta = document.getElementById('ta');
+        var num = document.getElementById('num').value;
+        
+        function calcular(){
+            var taula = "<table border='1'>";
+            
+            for(var i = 1; i <= 10; i++)
+        {
+            taula += '<tr><td>'+ num + '</td><td>' + i + '</td><td>' + num*i +'</td></tr>'; 
 
-        function saludar(){
-            switch(day){
-                case 6: 
-                case 0: alert("Està tancat");
-                break;
-                default: alert("Està obert");
-                break;
-            }
         }
 
-        for(var i = 0; i < 10; i++)
-        {
-            document.write("<p>Hola</p>");
+        taula += '</table>';
+
+        ta.innerHTML = taula;
         }
 
     </script>

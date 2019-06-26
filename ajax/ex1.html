@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        #capa1 {
+            width: 1000px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+    <button class="btn btn-primary" id="carregar">Carregar</button>
+    <script>
+
+        $(function () {
+            $('.container').load("primavera.html", function (respostaTxt, statusTxt, xhr) {
+
+                if (statusTxt == "success") {
+                    alert(xhr.status);
+                    alert(xhr.statusText);
+                }
+                if (statusTxt == "error") {
+                    alert(xhr.status);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

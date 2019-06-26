@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Practica 1 CSS</title>
+    <style>
+        body {
+            background-color: "#b3f442"; 
+            color: "white";
+            font-size: "16px";
+            font-family: "verdana";
+        }
+
+        button {
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .col {
+            margin-top: 35px;
+        }
+
+        #img1,
+        #img2,
+        #img3,
+        #img4 {
+            width: 64px;
+            height: 64px;
+        }
+
+        #imgGran {
+            width: 500px;
+            height: 220px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            <div class="col-xs-3">
+                <button class="btn btn-primary" id="primavera" value="canviar">Primavera</button>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-primary" id="estiu" value="canviar">Estiu</button>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-primary" id="tardor" value="canviar">Tardor</button>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-primary" id="hivern" value="canviar">Hivern</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-6">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img id="imgGran" src="data:image/jpeg;base64,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">
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="primer" class="col-xs-3">
+                        <img id="img1" src="https://www.w3schools.com/w3css/img_lights.jpg">
+                    </div>
+                    <div id="segon" class="col-xs-3">
+                        <img id="img2"
+                            src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg">
+                    </div>
+                    <div id="tercer" class="col-xs-3">
+                        <img id="img3" src="https://www.w3schools.com/howto/img_snow.jpg">
+                    </div>
+                    <div id="quart" class="col-xs-3">
+                        <img id="img4"
+                            src="https://mondrian.mashable.com/uploads%252Fstory%252Fthumbnail%252F94491%252F39f63945-f75a-4f5a-85b0-3acdc3f94af7.png%252F950x534.png?signature=4nxfoPoNhOr9HpvVEjDbcgq1jII=&source=https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com">
+                    </div>
+                </div>
+            </div>
+            <div id="desc" class="col col-xs-6">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+        </div>
+        <div class="row">
+            <div id="desc2" class="col">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(function () {
+            $('.btn').click(function () {
+                $('.btn').removeClass('btn-success');
+                $(this).addClass('btn-success');
+            });
+            $('#primavera').click(function () {
+                $('body').css({
+                    backgroundColor: "#b3f442",
+                    color: "white",
+                    fontSize: "16px",
+                    fontFamily: "verdana"
+                });
+                $('#desc').load("primavera.html #desc_primavera");
+                $('#desc2').load("primavera.html #desc2_primavera");
+            });
+            $('#estiu').click(function () {
+                $('body').css({
+                    backgroundColor: "#fffda5",
+                    color: "orange",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    fontFamily: "Comic Sans MS"
+                });
+                $('#desc').load("estiu.html #desc_estiu");
+                $('#desc2').load("estiu.html #desc2_estiu");
+            });
+            $('#tardor').click(function () {
+                $('body').css({
+                    backgroundColor: "#ffc370",
+                    color: "brown",
+                    fontSize: "20px",
+                    fontFamily: "Impact, Charcoal, sans-serif"
+                });
+                $('#desc').load("tardor.html #desc_tardor");
+                $('#desc2').load("tardor.html #desc2_tardor");
+            });
+            $('#hivern').click(function () {
+                $('body').css({
+                    backgroundColor: "#70ccff",
+                    color: "black",
+                    fontSize: "20px",
+                    fontFamily: "Tahoma, Geneva, sans-serif"
+                });
+                $('#desc').load("hivern.html #desc_hivern");
+                $('#desc2').load("hivern.html #desc2_hivern");
+            });
+            $('#img1').click(function () {
+                var imatge1 = $('#img1').attr('src');
+                $('#imgGran').attr('src', imatge1);
+                $('#img2').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img3').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img4').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img1').css({ boxShadow: "10px 10px 10px rgba(0,0,0,0.4)" });
+            });
+            $('#img2').click(function () {
+                var imatge2 = $('#img2').attr('src');
+                $('#imgGran').attr('src', imatge2);
+                $('#img1').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img3').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img4').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img2').css({ boxShadow: "10px 10px 10px rgba(0,0,0,0.4)" });
+            });
+            $('#img3').click(function () {
+                var imatge3 = $('#img3').attr('src');
+                $('#imgGran').attr('src', imatge3);
+                $('#img1').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img2').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img4').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img3').css({ boxShadow: "10px 10px 10px rgba(0,0,0,0.4)" });
+            });
+            $('#img4').click(function () {
+                var imatge4 = $('#img4').attr('src');
+                $('#imgGran').attr('src', imatge4);
+                $('#img1').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img2').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img3').css({ boxShadow: "0px 0px 0px rgba(0,0,0,0.0)" });
+                $('#img4').css({ boxShadow: "10px 10px 10px rgba(0,0,0,0.4)" });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>AJAX 2</title>
+    <style>
+        #capa1 {
+            background-color: yellow;
+            width: 300px;
+            height: 100px;
+        }
+
+        #capa2 {
+            background-color: aqua;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <p>Nom:</p>
+                <p id="nomprod0"></p>
+                <p>Preu:</p>
+                <p id="preuprod0"></p>
+            </div>
+            <div class="col-xs-4">
+                <p>Nom:</p>
+                <p id="nomprod1"></p>
+                <p>Preu:</p>
+                <p id="preuprod1"></p>
+            </div>
+            <div class="col-xs-4">
+                <p>Nom:</p>
+                <p id="nomprod2"></p>
+                <p>Preu:</p>
+                <p id="preuprod2"></p>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" id="carregar">Carregar</button>
+    <script>
+
+        $(function () {
+            $('#carregar').click(function () {
+                $.ajax({
+                    url: "contingut.json",
+                    method: "get",
+                    dataType: "json",
+                    success: function (result) {
+                        $.each(result, function (i, item) {
+                            $('#nomprod'+i).html(item.nom);
+                            $('#preuprod'+i
+                            ).html(item.preu);
+                        });
+                    },
+                    error: function (err) {
+                        alert("Something went wrong: " + err);
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

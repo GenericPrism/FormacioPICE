@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>AJAX 2</title>
+    <style>
+        #capa1 {
+            background-color: yellow;
+            width: 300px;
+            height: 100px;
+        }
+        #capa2 {
+            background-color: aqua;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="capa1"></div>
+        <div id="capa2"></div>
+        <button class="btn btn-primary" id="carregar">Carregar</button>
+    </div>
+    <script>
+
+        $(function () {
+           $('#carregar').click(function(){
+                $.get("contingut.html", function(data, status){
+                    if(status == "success")
+                    {
+                        var text = data.split("<p>");
+                        console.log(text);
+                        var text1 = text[1].replace("</p>", "");
+                        var text2 = text[2].replace("</p>", "");
+                        console.log("text1"+text1);
+                        console.log("text2"+text2);
+                        $('#capa1').html(text1);
+                        $('#capa2').html(text2);
+                    }
+                });
+           });
+        });
+
+    </script>
+</body>
+
+</html>

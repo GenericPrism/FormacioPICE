@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>AJAX 2</title>
+    <style>
+        #capa1 {
+            background-color: yellow;
+            width: 300px;
+            height: 100px;
+        }
+
+        #capa2 {
+            background-color: aqua;
+            width: 300px;
+            height: 100px;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Adreça</th>
+                    <th scope="col">Horari</th>
+                    <th scope="col">Tarifes</th>
+                    <th scope="col">Accessos</th>
+                </tr>
+            </thead>
+            <tbody>
+    </div>
+    <script>
+
+        $(function () {
+            $.ajax({
+                url: "biciletes.json",
+                dataType: "json",
+                success: function (result, status) {
+                    $.each(result.ParkingList.Parking, function (i, item) {
+
+                        var llistacap = "<ul>";
+                        var accessos = "";
+
+                        var isArray = Array.isArray(item.ParkingPriceList.Price);
+                        if (isArray) {
+                            $.each(item.ParkingPriceList.Price, function (i, item) {
+                                if (i >= 1) {
+                                    llistacap += "<hr>";
+                                }
+                                llistacap += "<li>Tipus: " + item.VehicleType + "</li><li>Preu: " + item.Amount + "</li>";
+                            });
+                            llistacap += "</ul>";
+                        }
+                        else {
+                            llistacap += "<li>Tipus: " + item.ParkingPriceList.Price.VehicleType + "</li><li>Preu: " + item.ParkingPriceList.Price.Amount + "</li></ul>";
+                        }
+
+                        var isArr = Array.isArray(item.ParkingAccess.Access);
+                        if (isArr) {
+                            $.each(item.ParkingAccess.Access, function (i, item) {
+                                if (i >= 1) {
+                                    accessos += "<hr>";
+                                }
+                                accessos += "<li>ID: " + item.AccessID + "</li><li>Adreça:<a href='https://www.latlong.net/c/?lat=" + item.Latitude + "&long=" + item.Longitude + "' target='_blank'>" + item.AccessAddress + "</a></li>";
+                            });
+                            accessos += "</ul>";
+                        }
+                        else {
+                            accessos += "<li>ID: " + item.ParkingAccess.Access.AccessID + "</li><li>Adreça:<a href='https://www.latlong.net/c/?lat=" + item.ParkingAccess.Access.Latitude + "&long=" + item.ParkingAccess.Access.Longitude + "' target='_blank'>" + item.ParkingAccess.Access.AccessAddress + "</a></li></ul>";
+                        }
+                        $('table').append("<tr><th scope='row'>" + item.Address + "</th><td>" + item.Open + " - " + item.Close + "</td><td>" + llistacap + "</td><td>" + accessos + "</td></tr>");
+                    })
+
+                    $('table').append("</tbody></table>");
+                }
+            })
+        });
+
+    </script>
+</body>
+
+</html>

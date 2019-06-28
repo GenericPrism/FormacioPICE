@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>AJAX 2</title>
+    <style>
+        #cercador {
+            margin-top: 35px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #capa1 {
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+        }
+
+        #contingut {
+            margin-left: 100px;
+        }
+        #contingut2 {
+            clear: both;
+            width: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="cercador" class="col-xs-12">
+                <label>Introdueix nom:</label>
+                <input type="text" id="inputText" placeholder="Introdueix Nom">
+                <input type="button" id="carregar" class="btn btn-primary" value="Buscar">
+                <input type="button" id="carregar2" class="btn btn-primary" value="Buscar Repos">
+            </div>
+        </div>
+        <div id="capa1">
+            <div class="row">
+                <div class="col-xs-4">
+                    <img id="imatge" style="width:200px; height:200px;" src="">
+                </div>
+                <div id="contingut" class="col-xs-4">
+                    <label>Nom:</label>
+                    <p id="nom"></p>
+                    <label>Followers:</label>
+                    <p id="followers"></p>
+                    <label>Following:</label>
+                    <p id="following"></p>
+                    <label>Repos:</label>
+                    <p id="repos"></p>
+                </div>
+            </div>
+            <div id="contingut2" class="row">
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(function () {
+            $('#carregar').click(function () {
+                var text = $('#inputText').val();
+                $.ajax({
+                    url: "https://api.github.com/users/" + text + "?client_id=fa8b8ebce22f6c337fbc&client_secret=962e450a449537080ca1e64559d59bf8804a5324",
+                    method: "GET",
+                    dataType: "json",
+                    success: function (data, status) {
+                        console.log(data);
+                        console.log(status);
+                        $("#imatge").attr("src", data.avatar_url);
+                        if (data.name == null) {
+                            $("#nom").text("No té nom.");
+                        }
+                        else {
+                            $("#nom").text(data.name);
+                        }
+                        $('#followers').text(data.followers);
+                        $('#following').text(data.following);
+                        $('#repos').text(data.public_repos);
+                    },
+                    error: function (err) {
+                        alert("Something Went Wrong!");
+                        console.log(err);
+                    }
+                });
+            });
+            $('#carregar2').click(function () {
+                var text = $('#inputText').val();
+                $.getJSON("https://api.github.com/users/" + text + "/repos?client_id=fa8b8ebce22f6c337fbc&client_secret=962e450a449537080ca1e64559d59bf8804a5324", function (data) {
+                    console.log(data);
+                    var cols = "";
+                    $.each(data, function (i, item) {
+                        cols += "<div class='col-xs-4'><div class='row'><div class='col-xs-4'><a href="+item.html_url+" target='_blank'>"+item.name+"</a></p></div>";
+                    });
+                    $('#contingut2').append(cols);
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

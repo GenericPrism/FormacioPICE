@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="../plugins/simplePagination.js-master/jquery.simplePagination.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>AJAX 2</title>
+    <style>
+        .list-wrapper {
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .list-item {
+            border: 1px solid #EEE;
+            background: #FFF;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px 0px #EEE;
+        }
+
+        .list-item h4 {
+            color: #FF7182;
+            font-size: 18px;
+            margin: 0 0 5px;
+        }
+
+        .list-item p {
+            margin: 0;
+        }
+
+        .simple-pagination ul {
+            margin: 0 0 20px;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        .simple-pagination li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .simple-pagination li a,
+        .simple-pagination li span {
+            color: #666;
+            padding: 5px 10px;
+            text-decoration: none;
+            border: 1px solid #EEE;
+            background-color: #FFF;
+            box-shadow: 0px 0px 10px 0px #EEE;
+        }
+
+        .simple-pagination .current {
+            color: #FFF;
+            background-color: #FF7182;
+            border-color: #FF7182;
+        }
+
+        .simple-pagination .prev.current,
+        .simple-pagination .next.current {
+            background: #e04e60;
+        }
+
+        #cercador {
+            margin-top: 35px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #capa1 {
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+        }
+
+        #contingut {
+            margin-left: 100px;
+        }
+
+        #pagination-container {
+            margin-top: 35px;
+        }
+
+        a {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="cercador" class="col-xs-12">
+                <label>Introdueix Etiqueta:</label>
+                <input type="text" id="inputText" placeholder="Introdueix Nom">
+                <input type="button" id="carregar" class="btn btn-primary" value="Buscar">
+            </div>
+        </div>
+        <div id="pagination-container">
+            <a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a
+                href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a>
+        </div>
+        <div id="contingut2" class="container">
+
+        </div>
+    </div>
+    <script>
+
+        $(function () {
+            $('#carregar').click(function () {
+                Crida("");
+            });
+            $('a').click(function(){
+                var num = $(this).text();
+                console.log(num);
+                $('#contingut2').empty();
+                Crida(num);
+            })
+        });
+
+        function Crida(nPage) {
+            var text = $('#inputText').val();
+
+            $.ajax({
+                url: "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=2e7036ccae909851b5525c61881a1c24&tags=" + text + "&per_page=&page="+ nPage +"&format=json&nojsoncallback=1",
+                method: "GET",
+                dataType: "json",
+                success: function (data, status) {
+
+                    var cols = "<div class='row'>";
+
+                    $.each(data.photos.photo, function (i, item) {
+                        var url = "'https://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + ".jpg'";
+                        cols += "<div class='col-xs-12 col-sm-6 col-md-4'><p>" + item.title + "</p><img src=" + url + " style='width:200px; height: 200px;'></div>'";
+                    });
+                    cols += "</div>";
+                    console.log(cols);
+                    $('#contingut2').html(cols);
+                },
+                error: function (err) {
+                    alert("Something Went Wrong!");
+                    console.log(err);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../plugins/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>PHP FORMS 2</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quantitat i producte</h1>
+        <form method="post" action="ex2.php">
+            <input type="number" name="num1" placeholder="Introdueix nombre">
+            <select name="plat1" id="plat1">
+                <option value="">Tria</option>
+                <option value="sopa">Sopa</option>
+                <option value="macarrons">Macarrons</option>
+                <option value="fideus">Fideus</option>
+                <option value="butiffara">Butiffarra</option>
+                <option value="pop">Pop</option>
+            </select>
+            <br>
+            <input type="number" name="num2" placeholder="Introdueix nombre">
+            <select name="plat2" id="plat2">
+                <option value="">Tria</option>
+                <option value="sopa">Sopa</option>
+                <option value="macarrons">Macarrons</option>
+                <option value="fideus">Fideus</option>
+                <option value="butiffara">Butiffarra</option>
+                <option value="pop">Pop</option>
+            </select>
+            <br>
+            <input type="number" name="num2" placeholder="Introdueix nombre">
+            <select name="plat3" id="plat3">
+                <option value="">Tria</option>
+                <option value="sopa">Sopa</option>
+                <option value="macarrons">Macarrons</option>
+                <option value="fideus">Fideus</option>
+                <option value="butiffara">Butiffarra</option>
+                <option value="pop">Pop</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#plat1").change(function () {
+                var plat = $('#plat1').val();
+                $("#plat2 option[value='" + plat + "']").hide();
+                $("#plat2 option[value!='" + plat + "']").show();
+                $("#plat3 option[value='"+plat+"']").hide();
+                $("#plat3 option[value!='" + plat + "']").show();
+            });
+            $("#plat2").change(function () {
+                var plat2 = $('#plat2').val();
+                $("#plat1 option[value='" + plat2 + "']").hide();
+                $("#plat3 option[value!='" + plat2 + "']").show();
+                $("#plat3 option[value='"+plat2+"']").hide();
+                $("#plat1 option[value!='" + plat2 + "']").show();
+            });
+            $("#plat3").change(function () {
+                var plat3 = $('#plat3').val();
+                $("#plat2 option[value='" + plat3 + "']").hide();
+                $("#plat2 option[value!='" + plat3 + "']").show();
+                $("#plat1 option[value='"+plat3+"']").hide();
+                $("#plat1 option[value!='" + plat3 + "']").show();
+            });
+        });
+
+    </script>
+</body>
+
+</html>

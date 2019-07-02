@@ -1,3 +1,14 @@
+<?php 
+    session_start();
+    if(isset($_POST['tipus_cotxe']))
+    {
+        $_SESSION['tipus'] = $_POST['tipus_cotxe'];
+    }
+    if(isset($_POST['tipus_moto']))
+    {
+        $_SESSION['tipus'] = $_POST['tipus_moto'];
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -20,23 +31,13 @@
 
 <body>
     <div class="container">
-        <form method="post" action="pas2.php">
-            <?php if(isset($_POST['cotxe'])) { ?>
-            <label>Cotxe</label>
-            <select name="color_cotxe">
+        <form method="post" action="pas3.php">
+            <label>Descripció</label>
+            <select name="color">
                 <option value="vermell">Vermell</option>
                 <option value="blau">Blau</option>
-                <option value="esportiu">Esportiu</option>
+                <option value="groc">Groc</option>
             </select>
-            <?php } ?>
-            <?php if(isset($_POST['moto'])) { ?>
-            <label>Moto</label>
-            <select name="desc_moto">
-                <option value="carretera">Carretera</option>
-                <option value="enduro">Enduro</option>
-                <option value="trial">Trial</option>
-            </select>
-            <?php } ?>
             <input type="submit" value="triar">
         </form>
     </div>

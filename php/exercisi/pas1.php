@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(isset($_POST['vehicle']))
+    {
+        $_SESSION['vehicle'] = $_POST['vehicle'];
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -21,17 +28,17 @@
 <body>
     <div class="container">
         <form method="post" action="pas2.php">
-            <?php if($_POST['vehicle'] == "cotxe") { ?>
+            <?php if($_SESSION['vehicle'] == "cotxe") { ?>
             <label>Cotxe</label>
-            <select name="cotxe">
+            <select name="tipus_cotxe">
                 <option value="util">Utilitari</option>
                 <option value="furgo">Furgoneta</option>
                 <option value="esportiu">Esportiu</option>
             </select>
             <?php } ?>
-            <?php if($_POST['vehicle'] == "moto") { ?>
+            <?php if($_SESSION['vehicle'] == "moto") { ?>
             <label>Moto</label>
-            <select name="moto">
+            <select name="tipus_moto">
                 <option value="carretera">Carretera</option>
                 <option value="enduro">Enduro</option>
                 <option value="trial">Trial</option>

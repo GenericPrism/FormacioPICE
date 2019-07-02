@@ -1,3 +1,22 @@
+<?php 
+    session_start();
+
+    if(isset($_SESSION['color']))
+    {
+        header('Location: pas3.php');
+        exit;
+    }
+    else if(isset($_SESSION['tipus']))
+    {
+        header('Location: pas2.php');
+        exit;
+    }
+    else if(isset($_SESSION['vehicle']))
+    {
+        header('Location: pas1.php');
+        exit;
+    }
+?>
 <!doctype html>
 <html lang="en">
 

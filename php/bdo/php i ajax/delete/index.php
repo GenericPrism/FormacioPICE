@@ -24,10 +24,6 @@
             text-align: center;
         }
 
-        #form_id {
-            display: none;
-        }
-
         tr:hover {
             background-color: yellow;
         }
@@ -46,12 +42,8 @@
             background-color: lightgray;
         }
 
-        #taulaOrders, #taulaOrderDetails {
+        #dialog-confirm, #dialog-supplier {
             display: none;
-        }
-
-        .info {
-            margin-top: 40px;
         }
     </style>
 </head>
@@ -68,45 +60,119 @@
         </tr>
         </thead>
         <tbody id="tbody">
-            <?php 
+        <?php
 
-                $con = new mysqli("localhost", "root", "", "northwind");
+        $con = new mysqli("localhost", "root", "", "northwind");
 
-                if(isset($_GET['id']))
-                {
-                    $id = $_GET['id'];
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
 
-                    $sql = "DELETE FROM suppliers where SupplierID = ".$id;
+            $sql = "DELETE FROM suppliers where SupplierID = " . $id;
 
-                    if ($con->query($sql) === TRUE) {
-                        echo "Record deleted successfully";
-                    } else {
-                        echo "Error deleting record: " . $con->error;
-                    }
-                }
+            if ($con->query($sql) === TRUE) {
+                echo "Record deleted successfully";
+            } else {
+                echo "Error deleting record: " . $con->error;
+            }
+        }
 
-                $query = "SELECT * from suppliers";
+        $query = "SELECT * from suppliers";
 
-                $result = $con->query($query);
+        $result = $con->query($query);
 
-                while($supplier = $result->fetch_assoc())
-                {
-                    echo utf8_encode("<tr><td>".$supplier['CompanyName']."</td><td>".$supplier['ContactName']."</td><td><a href='index.php?id='".$supplier['SupplierID'].">Eliminar</a></td></tr>");
-                }
-            ?>
+        while ($supplier = $result->fetch_assoc()) {
+            echo utf8_encode("<tr><td>" . $supplier['CompanyName'] . "</td><td>" . $supplier['ContactName'] . "</td><td><button type='button' id=" . $supplier['SupplierID'] . " class='btn btn-danger'>Delete</button></td></tr>");
+        }
+        ?>
         </tbody>
     </table>
 </div>
+<div id="dialog-confirm" title="Realment vols eliminar aquest Supplier?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>This Supplier has <span
+                id="nItems"></span> products that will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+<div id="dialog-supplier" title="Sel·leccioni un Supplier">
+    <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span><select name="supplier"
+                                                                                                    id="sel_sup"></select>
+</div>
 <script>
     $(document).ready(function () {
-        $.ajax({
-            url: 'getProducts.php',
-            method: 'GET',
-            success: function (result) {
-                $("#tbody").html(result);
-            }
+        $("button").click(function () {
+            var id = this.id;
+            console.log(this.id);
+            var tr = $(this).closest("tr");
+            $.ajax({
+                url: "allProducts.php?id=" + id,
+                method: 'GET',
+                success: function (result) {
+                    console.log(result);
+                    $('#nItems').html(result);
+                    $('#dialog-confirm').show();
+                    $("#dialog-confirm").dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            "Delete all items": function () {
+                                $.ajax({
+                                    url: 'allProducts.php?deleteAll=' + id,
+                                    method: 'GET',
+                                    success: function (result) {
+
+                                    }
+                                })
+                                $(this).dialog("close");
+                            },
+                            "Delete all + move products":
+
+                                function () {
+
+                                    var supplier = 1;
+                                    $.ajax({
+                                        url: 'allProducts.php?supplier=' + supplier,
+                                        method: 'GET',
+                                        success: function (result) {
+                                            console.log(result);
+                                            $('#sel_sup').html(result);
+                                            $("#dialog-supplier").dialog({
+                                                resizable: false,
+                                                height: "auto",
+                                                width: 400,
+                                                modal: true,
+                                                buttons: {
+                                                    "Delete": function () {
+                                                        $.ajax({
+                                                            url: 'allProducts.php?delete=' + supplier,
+                                                            method: 'GET',
+                                                            success: function (result) {
+                                                                console.log(result);
+                                                            }
+                                                        })
+                                                            $( this).dialog("close");
+                                                    },
+                                                        Cancel: function () {
+                                                            $(this).dialog("close");
+                                                        }
+                                                    }
+                                                });
+                                        });
+                                )
+                        })
+                    $(this).dialog("close");
+
+                ,
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
         });
     });
+    })
+    ;
+    })
+    ;
 </script>
 </body>
 

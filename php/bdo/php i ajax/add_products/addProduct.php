@@ -2,6 +2,11 @@
 
 $con = new mysqli("localhost", "root", "", "northwind");
 
+if(!file_exists("uploads/"))
+{
+    mkdir("uploads", "0777");
+}
+
 if(isset($_POST['prod_name']) && isset($_POST['suppliers']) && isset($_POST['categories']) && isset($_POST['discounted']))
 {
     $prod_name = $_POST['prod_name'];
@@ -23,10 +28,40 @@ if(isset($_POST['prod_name']) && isset($_POST['suppliers']) && isset($_POST['cat
     $sql = "INSERT INTO products (ProductName, SupplierID, CategoryID, Discontinued) VALUES('".$prod_name."', ".$supplier_id.", ".$category_id.", ".$discounted.")";
 
     if ($con->query($sql) === TRUE) {
-        header("Location: products.php");
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+
+        $query3 = "SELECT * FROM products where ProductName = '".$prod_name."'";
+        $result = $con->query($query3);
+        $producte = $result->fetch_assoc();
+
+        if(isset($_FILES['photo']))
+        {
+            if(!file_exists("uploads/".$producte['ProductID']))
+            {
+                mkdir("uploads/".$producte['ProductID']);
+            }
+            if(file_exists("uploads/".$producte['ProductID']."/".basename($_FILES['photo']['name'])))
+            {
+                echo "Aquest fitxer ja existeix";
+            }
+            else {
+                if(move_uploaded_file($_FILES['photo']['tmp_name'], "uploads/".$producte['ProductID']."/".basename($_FILES['photo']['name'])))
+                {
+                    $photo = $_FILES['photo']['name'];
+                }
+                else {
+                    $photo = "";
+                }
+
+                $sql2 = "UPDATE products set Photo = '".$photo."' where ProductID = '".$producte['ProductID']."'";
+
+                if ($con->query($sql2) === TRUE) {
+                    header('Location: products.php');
+                    exit;
+                } else {
+                    echo "Error updating record: " . $con->error;
+                }
+            }
+        }
     }
 
 }
@@ -36,6 +71,7 @@ $query2 = "SELECT * FROM categories";
 $result = $con->query($query);
 $result2 = $con->query($query2);
 
+$con->close();
 ?>
 
 <!doctype html>
@@ -53,17 +89,12 @@ $result2 = $con->query($query2);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
     <title>PHP FORMS 1</title>
-    <style>
-        #prod_name.highlight {
-            border: 2px solid red;
-        }
-    </style>
 </head>
 
 <body>
 <div class="container" id="customers">
     <h3 style="text-align: center;">Productes</h3>
-    <form method="post" action="addProduct.php">
+    <form method="post" action="addProduct.php" enctype="multipart/form-data">
         <div class="form-group">
             <label>Product Name</label>
             <input type="text" name="prod_name" class="form-control" id="prod_name">
@@ -96,6 +127,10 @@ $result2 = $con->query($query2);
                 <option>0</option>
                 <option>1</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label>Photo</label>
+            <input type="file" class="form-control" name="photo">
         </div>
         <button type="submit" class="btn btn-primary">Afegir</button>
     </form>

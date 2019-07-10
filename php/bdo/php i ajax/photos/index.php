@@ -11,7 +11,9 @@
     <script src="https://kit.fontawesome.com/46d6e5048e.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <title>PHP FORMS 1</title>
     <style>
         #customers {
@@ -20,10 +22,6 @@
 
         td {
             text-align: center;
-        }
-
-        #form_id {
-            display: none;
         }
 
         tr:hover {
@@ -44,46 +42,34 @@
             background-color: lightgray;
         }
 
-        #taulaOrders, #taulaOrderDetails {
+        #dialog-confirm {
             display: none;
         }
 
-        .info {
-            margin-top: 40px;
+        label {
+            width: 150px;
         }
     </style>
 </head>
 
 <body>
 <div class="container" id="customers">
-    <h3 style="text-align: center;">Clients</h3>
-    <form method="post" action="addProduct.php">
-        <input type="submit" value="Afegir">
+    <form method="post" action="afegir.php" enctype="multipart/form-data">
+        <label>Product Name:</label>
+        <input type="text" name="first_name" id="firstname">
+        <br><label>Last Name:</label>
+        <input type="text" name="last_name" id="lastname">
+        <br><label>Birth Date:</label>
+        <input type="text" name="birth_date" id="birthdate">
+        <br><label>Hire Date:</label>
+        <input type="text" name="hire_date" id="hiredate">
+        <br><input type="file" name="file">
+        <input type="submit" value="Enviar">
     </form>
-    <table class="table table-striped" id="taula">
-        <thead>
-        <tr>
-            <th scope="col" class="text-center">Product Name</th>
-            <th scope="col" class="text-center">Supplier ID</th>
-            <th scope="col" class="text-center">Category ID</th>
-            <th scope="col" class="text-center">Discontinued</th>
-            <th scope="col" class="text-center">Photo</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-
-        </tbody>
-    </table>
 </div>
 <script>
     $(document).ready(function () {
-        $.ajax({
-            url: 'getProducts.php',
-            method: 'GET',
-            success: function (result) {
-                $("#tbody").html(result);
-            }
-        });
+
     });
 </script>
 </body>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Bootstrap CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <title>Jquery Converter</title>
+    <style>
+        label {
+            width: 75px;
+        }
+        #progressbar_1, #progressbar_2, #progressbar_3, #progressbar_4, #text_1 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #text_1, #text_2, #text_3, #text_4 {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            margin-top: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <select name="moneda" id="moneda">
+        <option value="">Sel·lecciona una moneda</option>
+        <option value="dollar">Dollar</option>
+        <option value="yen">Yen</option>
+        <option value="lliura">Lliura</option>
+        <option value="pesos">Pesos</option>
+    </select>
+</div>
+<label id="text_1"></label>
+<div id="progressbar_1"></div>
+<label id="text_2"></label>
+<div id="progressbar_2"></div>
+<label id="text_3"></label>
+<div id="progressbar_3"></div>
+<label id="text_4"></label>
+<div id="progressbar_4"></div>
+<script>
+
+    $(document).ready(function(){
+        $('#moneda').on('change', function () {
+            $.ajax({
+                url: 'https://api.ratesapi.io/api/latest',
+                method: 'GET',
+                success: function (result) {
+                    var valor = $('#moneda').val();
+                    var moneda_actual = tipusMoneda(valor);
+
+                    var first_week = getMonday(1);
+                    first_week = formatDate(first_week);
+                    var second_week = getMonday(7);
+                    second_week = formatDate(second_week);
+                    var third_week = getMonday(14);
+                    third_week = formatDate(third_week);
+                    var fourth_week = getMonday(21);
+                    fourth_week = formatDate(fourth_week);
+
+                    pastRates(first_week, moneda_actual, 1);
+                    pastRates(second_week, moneda_actual, 2);
+                    pastRates(third_week, moneda_actual, 3);
+                    pastRates(fourth_week, moneda_actual, 4);
+
+                }
+            })
+        })
+    });
+    function getMonday(days) {
+        var beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * days * 1000);
+        var day = beforeOneWeek.getDay();
+        var diffToMonday = beforeOneWeek.getDate() - day + (day === 0 ? -6 : 1);
+        var lastMonday = new Date(beforeOneWeek.setDate(diffToMonday));
+
+        return lastMonday;
+    }
+
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    function pastRates(date, moneda_actual, id) {
+        var conversio = 0;
+        $.ajax({
+            url: `https://api.ratesapi.io/api/${date}`,
+            method: 'GET',
+            success: function (result)
+            {
+                conversio = result.rates[moneda_actual];
+                var refit = 0;
+
+                if(moneda_actual == "JPY")
+                {
+                    refit = conversio/2;
+                }
+                else if(moneda_actual == "USD") {
+                    refit = conversio*50;
+                }
+                else if(moneda_actual == "GBP")
+                {
+                    refit = conversio*80;
+                }
+                else{
+                    refit = conversio*2;
+                }
+                $('#text_'+id).html(conversio);
+                $( "#progressbar_"+id ).progressbar({
+                    max: 100,
+                    value: refit
+                });
+            }
+        })
+    }
+
+    function tipusMoneda(valor) {
+        var moneda_actual = "";
+
+        if(valor == "dollar")
+        {
+            moneda_actual = "USD";
+        }
+        else if(valor == "yen")
+        {
+            moneda_actual = "JPY";
+        }
+        else if(valor == "lliura")
+        {
+            moneda_actual = "GBP";
+        }
+        else if(valor == "pesos")
+        {
+            moneda_actual = "MXN";
+        }
+        return moneda_actual;
+    }
+</script>
+</body>
+
+</html>
